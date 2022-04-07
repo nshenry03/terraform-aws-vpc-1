@@ -22,6 +22,12 @@ variable "enable_ipv6" {
   default     = false
 }
 
+variable "ipv6_ipam_pool_id" {
+  description = "IPAM Pool ID for a IPv6 pool"
+  type        = string
+  default     = ""
+}
+
 variable "private_subnet_ipv6_prefixes" {
   description = "Assigns IPv6 private subnet id based on the Amazon provided /56 prefix base 10 integer (0-256). Must be of equal length to the corresponding IPv4 subnet list"
   type        = list(string)
