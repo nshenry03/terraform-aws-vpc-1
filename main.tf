@@ -57,6 +57,16 @@ resource "aws_vpc" "this" {
     var.tags,
     var.vpc_tags,
   )
+
+  # EC2-native BYOIP can be associated by a caller after VPC creation. AWS
+  # reports that association here as IPAM metadata, although this resource did
+  # not create it. Do not attempt to clear the externally managed association.
+  lifecycle {
+    ignore_changes = [
+      ipv6_ipam_pool_id,
+      ipv6_netmask_length,
+    ]
+  }
 }
 
 resource "aws_vpc_ipv4_cidr_block_association" "this" {
