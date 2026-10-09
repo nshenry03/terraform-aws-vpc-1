@@ -86,6 +86,12 @@ variable "ipv6_cidr" {
   default     = null
 }
 
+variable "ipv6_subnet_cidr" {
+  description = "(Optional) IPv6 CIDR block used only to derive subnet CIDRs. Set when the VPC IPv6 CIDR is associated externally."
+  type        = string
+  default     = null
+}
+
 variable "ipv6_ipam_pool_id" {
   description = "(Optional) IPAM Pool ID for a IPv6 pool. Conflicts with `assign_generated_ipv6_cidr_block`"
   type        = string
